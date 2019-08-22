@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText txtNumero;
@@ -17,15 +18,22 @@ public class MainActivity extends AppCompatActivity {
         txtNumero = findViewById(R.id.txtNumero);
         lblResultado2 = findViewById(R.id.lblResultado2);
     }
+
     public void onProcessar(View v) {
-        int numero = Integer.parseInt(txtNumero.getText().toString());
-        if (numero % 2 == 0) {
-            lblResultado2.setText("PAR");
+        if (txtNumero.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Digite o valor", Toast.LENGTH_SHORT).show();
+
         } else {
-            lblResultado2.setText("ÍMPAR");
+            int numero = Integer.parseInt(txtNumero.getText().toString());
+            if (numero % 2 == 0) {
+                lblResultado2.setText("PAR");
+            } else {
+                lblResultado2.setText("ÍMPAR");
+            }
+
+
         }
 
+
     }
-
-
 }
